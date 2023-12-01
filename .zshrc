@@ -3,6 +3,15 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export DENO_INSTALL="/home/euler/.deno"
+export GO_INSTALL="/home/euler/.local/share/go"
+export ANDROID_STUDIO_INSTALL="/home/euler/.local/share/android-studio"
+export DEVLOG_INSTALL="/home/euler/Development/Projects/devlog/target/release"
+export ZIG_INSTALL="/opt/zig/zig-linux-x86_64-0.12.0-dev.1754+2a3226453"
+export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$GO_INSTALL/bin:$PATH"
+export PATH="$DEVLOG_INSTALL:$PATH"
+export PATH="$ZIG_INSTALL:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -70,7 +79,7 @@ ZSH_THEME="noether"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -99,20 +108,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim='nvim'
-alias repo='xbps-query -Rs'
-alias get='sudo xbps-install'
-alias update='sudo xbps-install -Su'
-alias check='xcheckrestart'
-alias clean='sudo xbps-remove -O'
-alias orphans='xbps-query --list-orphans'
-alias activate='source ~/dev/python/.venv/bin/activate'
-alias pn='./.local/share/pnpm/pnpm'
+alias vim='/opt/nvim-linux64/bin/nvim'
+alias ipy='ipython'
+alias studio='$ANDROID_STUDIO_INSTALL/bin/studio.sh'
+alias disas='objdump -drwC -Mintel'
 
-# pnpm
-export PNPM_HOME="/home/noether/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# fnm
+export PATH="/home/euler/.local/share/fnm:$PATH"
+eval "`fnm env`"
+
+# opam configuration
+[[ ! -r /home/euler/.opam/opam-init/init.zsh ]] || source /home/euler/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
