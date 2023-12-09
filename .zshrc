@@ -13,7 +13,7 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$GO_INSTALL/bin:$PATH"
 export PATH="$DEVLOG_INSTALL:$PATH"
 export PATH="$ZIG_INSTALL:$PATH"
-export PATH="$SCRIPTS_INSTALL:$PATH"
+export PATH="$SCRIPTS:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
